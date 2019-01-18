@@ -30,6 +30,8 @@ html[lang="en"]
                 = link_to 'Профиль', current_user
               li
                 = link_to 'Выйти', destroy_user_session_path, :method => :delete
+                li
+                  = link_to 'Создать новый пост', new_post_path
             - else
               li
                 = link_to 'Войти', new_user_session_path
