@@ -1,5 +1,3 @@
-p#notice
-  = notice
 h1
   | Список 10 последних постов
 table
@@ -13,5 +11,7 @@ table
           =post.title
         td
           =post.user.email
+        td
+          = l post.user.created_at, format: :short
         td
           = link_to 'Show', post
