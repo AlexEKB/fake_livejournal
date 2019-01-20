@@ -10,5 +10,14 @@ div
   p.buffer-top
     = link_to 'Редактировать пост', edit_post_path(@post), class: 'btn btn-default'
 
+.buffer-both
+  p
+    = 'Комментарии:'
+
+  = render partial: 'comments/comment', collection: @post.comments.limit(10).order(created_at: :asc)
+
+- if signed_in?
+  .buffer-top
+    = render partial: 'comments/form', locals: {comment: @new_comment || @post.comments.build}
 
 = link_to 'Back', posts_path

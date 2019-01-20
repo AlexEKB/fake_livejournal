@@ -1,9 +1,10 @@
-= form_for @comment do |f|
-  - if @comment.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
-      ul
-        - @comment.errors.full_messages.each do |message|
-          li = message
+= form_for [@post, comment] do |f|
+  = render partial: 'partials/form_errors', locals: {model: comment}
 
-  .actions = f.submit
+  .form-group
+    = f.label :'Написать комментарий:'
+    = f.text_area :body, class: 'form-control'
+
+  - if user_signed_in?
+    .actions
+      = f.submit 'Отправить', class: 'btn btn-primary'

@@ -1,0 +1,8 @@
+.buffer-bottom
+  p
+    = comment.body
+  p
+    em
+      = l comment.created_at, format: :short
+    - if comment.user == current_user
+      = link_to(fa_icon('times'), post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Удалить комментарий?' })

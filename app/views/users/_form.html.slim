@@ -1,17 +1,10 @@
-= form_with(model: @user, local: true) do |form|
-  - if @user.errors.any?
-    #error_explanation
-      h2
-        = pluralize(user.errors.count, "error")
-        |  prohibited this user from being saved:
-      ul
-        - @user.errors.full_messages.each do |message|
-          li
-            = message
+= form_for @user do |f|
+  = render partial: 'partials/form_errors', locals: {model: @user}
+
   .form-group
-    = form.label :email
-    = form.text_field :email, class: 'form-control'
+    = f.label :email
+    = f.text_field :email, class: 'form-control'
   .actions
-    = form.submit 'Сохранить', class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'
     |  или 
     = link_to 'вернуться', :back
