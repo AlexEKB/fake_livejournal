@@ -1,23 +1,31 @@
-div
-  h1
-    = @post.title
-  h3
-    = l @post.created_at, format: :short
-  p
-    = @post.text
+.container.s
+  .row.buffer-top
+    .col-md-4.buffer-top
+      .div
+      = image_tag 'medium_cover_show.png', class: 'post-img'
+    .col-md-7.buffer-top.text-top
+      .div
+        h4.text-info
+          = 'COLLECTION'
+        h1.page-header
+          = @post.title
+        h3
+          = l @post.created_at, format: :short
+        p.text-justify
+          = @post.text
 
-- if @post.user == current_user
-  p.buffer-top
-    = link_to 'Редактировать пост', edit_post_path(@post), class: 'btn btn-default'
+      - if @post.user == current_user
+        p.buffer-top
+      = link_to 'Редактировать пост', edit_post_path(@post), class: 'btn btn-primary'
 
-.buffer-both
-  p
-    = 'Комментарии:'
+      .buffer-both
+        p
+          = 'Комментарии:'
 
-  = render partial: 'comments/comment', collection: @post.comments.limit(10).order(created_at: :asc)
+        = render partial: 'comments/comment', collection: @post.comments.limit(10).order(created_at: :asc)
 
-- if signed_in?
-  .buffer-top
-    = render partial: 'comments/form', locals: {comment: @new_comment || @post.comments.build}
+      - if signed_in?
+        .buffer-top
+          = render partial: 'comments/form', locals: {comment: @new_comment || @post.comments.build}
 
-= link_to 'Back', posts_path
+      = link_to 'Back', posts_path

@@ -1,0 +1,38 @@
+.post-info {
+  position: relative;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.post-description * {
+  color: black;
+}
+
+.post-description a {
+  color: black;
+}
+
+.post-description small {
+  color: black;
+}
+
+.post-description comment {
+  color: gray;
+}
+
+.container s {
+  position: relative;
+}
+
+.post-img  {
+  position: fixed;
+  display: block;
+  height: 100%;
+  left: 0;
+  top: 50px;
+}
+
+.text-top {
+  top: 160px;
+}

@@ -1,8 +1,11 @@
 .buffer-bottom
   p
-    = comment.body
-  p
+    = (fa_icon('user-circle') + ' ' + (comment.user.email))
+    '
     em
-      = l comment.created_at, format: :short
+      = '*' + (l comment.created_at, format: :short) + '*'
+  p
+    = comment.body
+    '
     - if comment.user == current_user
       = link_to(fa_icon('times'), post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Удалить комментарий?' })

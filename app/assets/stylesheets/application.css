@@ -13,3 +13,86 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar-nav {
+    float: right;
+}
+
+/* Buffers */
+.buffer-top {
+    margin-top: 20px;
+}
+
+.buffer-bottom {
+    margin-bottom: 20px;
+}
+
+.buffer-both {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Avatars for users & posts */
+.img-icon, .img-icon-small {
+    height: 50px;
+    width: auto;
+    border-radius: 50%;
+}
+
+/* Thumbnails for posts/index */
+.thumbnail {
+    position: relative;
+    background: transparent;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.thumbnail h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: .3em;
+}
+
+.thumbnail-inner {
+    padding: 20px 4px 4px;
+}
+
+/* Buttons */
+
+/*Bootstrap button outline override*/
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+    border-bottom-color: rgb(3, 168, 124);
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}

@@ -5,7 +5,7 @@ html[lang="en"]
     meta[http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"]
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     title
-      = content_for?(:title) ? yield(:title) : "FakeLivejournal"
+      = content_for?(:title) ? yield(:title) : "FakeLiveJournal"
     = csrf_meta_tags
     link[href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"]
     = stylesheet_link_tag "application", :media => "all"
@@ -18,32 +18,30 @@ html[lang="en"]
   body
     .navbar.navbar-default.navbar-static-top
       .container
-        button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"]
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        = link_to "Fake LiveJournal", root_path, class: 'navbar-brand'
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          ul.nav.navbar-nav
-            - if user_signed_in?
-              li
-                = link_to 'Профиль', current_user
-              li
-                = link_to 'Выйти', destroy_user_session_path, :method => :delete
-                li
-                  = link_to 'Создать новый пост', new_post_path
-            - else
-              li
-                = link_to 'Войти', new_user_session_path
-              li
-                = link_to fa_icon('google', text: "Войти с помощью Google"), user_google_oauth2_omniauth_authorize_path
-              li
-                = link_to 'Зарегистрироваться', new_user_registration_path
-        .container
-          .row
-            .col-lg-9
-              = bootstrap_flash
-              = yield
-          footer
-            p
-              | © AlexeyAbdulmanov 2019
+        = link_to raw("<strong>Fake Live Journal</strong>"), root_path, class: 'navbar-brand'
+        ul.nav.navbar-nav
+          - if user_signed_in?
+            li
+              = link_to 'Профиль', current_user
+            li
+              = link_to 'Выйти', destroy_user_session_path, :method => :delete
+            li
+              = link_to 'Создать новый пост', new_post_path, class: 'btn btn-success btn-outline'
+          - else
+            li
+              = link_to 'Войти', new_user_session_path
+            li
+              = link_to fa_icon('google', text: "Войти с помощью Google"), user_google_oauth2_omniauth_authorize_path
+            li
+              = link_to 'Зарегистрироваться', new_user_registration_path, class: 'btn btn-success btn-outline'
+    .container
+      .row
+        .col-lg-11
+          = bootstrap_flash
+          = yield
+        .col-lg-1
+
+      footer
+        p.text-right
+          | © AlexeyAbdulmanov 2019
+
