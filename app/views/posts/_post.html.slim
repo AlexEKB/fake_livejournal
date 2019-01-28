@@ -1,0 +1,17 @@
+.col-md-4
+  .thumbnail
+    = image_tag 'medium_cover.png'
+    .thumbnail-inner
+      .caption
+        .post-description
+          h3
+            = link_to post.title, post_path(post)
+          h3
+            small
+            = post.user.email
+          h3
+            small
+              = l post.created_at, format: :short
+          h4
+            comment
+              = post.comments.count.to_s + " comments"

@@ -1,0 +1,13 @@
+= form_for @post do |f|
+  = render partial: 'partials/form_errors', locals: {model: @post}
+
+  .form-group
+    = f.label :Заголовок
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :Текст
+    = f.text_field :text, class: 'form-control'
+  .actions
+    = f.submit 'Запостить', class: 'btn btn-primary'
+    |  или
+    = link_to 'вернуться', :back

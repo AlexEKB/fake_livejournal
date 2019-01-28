@@ -1,0 +1,10 @@
+= form_for [@post, comment] do |f|
+  = render partial: 'partials/form_errors', locals: {model: comment}
+
+  .form-group
+    = f.label :'Написать комментарий:'
+    = f.text_area :body, class: 'form-control'
+
+  - if user_signed_in?
+    .actions
+      = f.submit 'Отправить', class: 'btn btn-primary'
