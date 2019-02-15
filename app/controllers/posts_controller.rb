@@ -17,16 +17,16 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
-    respond_with(@post)
+    respond_with @post
   end
 
   def update
-    respond_with(@post)
+    respond_with @post
   end
 
   def destroy
     @post.destroy
-    respond_with(@post)
+    respond_with @post
   end
 
   private

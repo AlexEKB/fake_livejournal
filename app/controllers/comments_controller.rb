@@ -3,7 +3,12 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
 
   def create
-    respond_with(@comment = @post.comments.create(comment_params.merge({user: current_user})), location: -> {post_path(@comment.post)})
+    @new_comment = @post.comments.build(comment_params)
+    if @new_comment.save
+      redirect_to @post, notice: 'Комментарий успешно создан.'
+    else
+      render 'posts/show'
+    end
   end
 
   def destroy
@@ -23,6 +28,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body).merge({user: current_user})
   end
 end

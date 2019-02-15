@@ -17,16 +17,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    respond_with(@user)
+    respond_with @user
   end
 
   def update
-    respond_with(@user)
+    respond_with @user
   end
 
   def destroy
     @user.destroy
-    respond_with(@user)
+    respond_with @user
   end
 
   private
