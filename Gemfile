@@ -15,8 +15,6 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'coffee-rails', '~> 4.2'
 
-gem 'jbuilder', '~> 2.5'
-
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bcrypt', '3.1.12', platforms: [:ruby]
@@ -27,7 +25,8 @@ gem 'omniauth-google-oauth2'
 
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
-gem "slim-rails"
+gem 'slim-rails'
+gem 'responders'
 
 group :development, :test do
   gem 'byebug'
@@ -45,5 +44,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

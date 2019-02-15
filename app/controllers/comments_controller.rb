@@ -3,18 +3,12 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
 
   def create
-    @new_comment = @post.comments.build(comment_params)
-    @new_comment.user = current_user
-    if @new_comment.save
-      redirect_to @post, notice: 'Комментарий успешно создан.'
-    else
-      render "posts/show"
-    end
+    respond_with(@comment = @post.comments.create(comment_params.merge({user: current_user})), location: -> {post_path(@comment.post)})
   end
 
   def destroy
     @comment.destroy
-    redirect_to @post, notice: 'Комментарий удалён.'
+    respond_with @comment, location: -> {post_path(@comment.post)}
   end
 
   private
@@ -24,7 +18,8 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @post.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
   end
 
   def comment_params
