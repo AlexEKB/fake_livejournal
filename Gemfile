@@ -5,6 +5,8 @@ ruby '2.5.1'
 
 gem 'rails', '~> 5.2.2'
 
+gem 'pg'
+
 gem 'puma', '~> 3.11'
 
 gem 'sass-rails', '~> 5.0'
@@ -12,10 +14,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'coffee-rails', '~> 4.2'
-
-gem 'turbolinks', '~> 5'
-
-gem 'jbuilder', '~> 2.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -27,15 +25,11 @@ gem 'omniauth-google-oauth2'
 
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
-gem "slim-rails"
-
-group :production do
-  gem 'pg'
-end
+gem 'slim-rails'
+gem 'responders'
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug'
 end
 
 group :development do
@@ -50,5 +44,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -36,10 +36,11 @@ html[lang="en"]
               = link_to 'Зарегистрироваться', new_user_registration_path, class: 'btn btn-success btn-outline'
     .container
       .row
-        .col-lg-11
-          = bootstrap_flash
+        .col-lg-8
+          .flash
+            = bootstrap_flash
+        .col-lg-12
           = yield
-        .col-lg-1
 
       footer
         p.text-right

@@ -57,6 +57,10 @@ and (min-resolution: 192dpi) {
     float: right;
 }
 
+.flash {
+    float: right;
+}
+
 /* Buffers */
 .buffer-top {
     margin-top: 20px;

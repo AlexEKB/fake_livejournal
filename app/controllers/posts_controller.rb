@@ -17,39 +17,25 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    respond_with @post
   end
 
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
-    end
+    respond_with @post
   end
 
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-    end
+    respond_with @post
   end
 
   private
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    def post_params
-      params.require(:post).permit(:title, :text)
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :text)
+  end
 end
