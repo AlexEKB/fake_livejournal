@@ -22,6 +22,7 @@ gem 'bcrypt', '3.1.12', platforms: [:ruby]
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'action_policy'
 
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'

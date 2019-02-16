@@ -1,18 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @users = User.all
-  end
-
-  def show
-  end
-
   def new
     @user = User.new
   end
 
   def edit
+    authorize! @user
   end
 
   def create
@@ -21,10 +15,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize! @user
+    @user.update(user_params)
     respond_with @user
   end
 
   def destroy
+    authorize! @user
     @user.destroy
     respond_with @user
   end

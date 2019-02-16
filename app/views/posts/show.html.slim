@@ -14,9 +14,9 @@
         p.text-justify
           = @post.text
 
-      - if @post.user == current_user
+      - if allowed_to?(:edit?, @post)
         p.buffer-top
-      = link_to 'Редактировать пост', edit_post_path(@post), class: 'btn btn-primary'
+          = link_to 'Редактировать пост', edit_post_path(@post), class: 'btn btn-primary'
 
       .buffer-both
         p

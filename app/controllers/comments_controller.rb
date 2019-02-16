@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 
   def create
     @new_comment = @post.comments.build(comment_params)
+    authorize! @new_comment
     if @new_comment.save
       redirect_to @post, notice: 'Комментарий успешно создан.'
     else
@@ -12,6 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authorize! @comment
     @comment.destroy
     respond_with @comment, location: -> {post_path(@comment.post)}
   end

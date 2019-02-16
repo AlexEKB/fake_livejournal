@@ -10,9 +10,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    authorize! @post
   end
 
   def edit
+    authorize! @post
   end
 
   def create
@@ -21,10 +23,13 @@ class PostsController < ApplicationController
   end
 
   def update
+    authorize! @post
+    @post.update(post_params)
     respond_with @post
   end
 
   def destroy
+    authorize! @post
     @post.destroy
     respond_with @post
   end
