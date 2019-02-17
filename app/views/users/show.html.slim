@@ -1,9 +1,9 @@
 .text-center
   h1
-    = @user.email
-  - if @user == current_user
+    = user.email
+  - if allowed_to?(:edit?, user)
     p.buffer-top
-      = link_to 'Редактировать профиль', edit_user_path(@user), class: 'btn btn-default'
-= link_to 'Show', @user
+      = link_to 'Редактировать профиль', edit_user_path(user), class: 'btn btn-default'
+= link_to 'Show', user
 |  |
 = link_to 'Back', users_path

@@ -28,6 +28,7 @@ gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'responders'
+gem 'decent_exposure', '3.0.0'
 
 group :development, :test do
   gem 'byebug'

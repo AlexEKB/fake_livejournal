@@ -82,6 +82,8 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
+    decent_exposure (3.0.0)
+      activesupport (>= 4.0)
     devise (4.5.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -281,6 +283,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  decent_exposure (= 3.0.0)
   devise
   font-awesome-rails
   listen (>= 3.0.5, < 3.2)

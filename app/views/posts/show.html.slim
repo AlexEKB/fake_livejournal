@@ -8,24 +8,24 @@
         h4.text-info
           = 'COLLECTION'
         h1.page-header
-          = @post.title
+          = post.title
         h3
-          = l @post.created_at, format: :short
+          = l post.created_at, format: :short
         p.text-justify
-          = @post.text
+          = post.text
 
-      - if allowed_to?(:edit?, @post)
+      - if signed_in? #|| allowed_to?(:edit?, post)
         p.buffer-top
-          = link_to 'Редактировать пост', edit_post_path(@post), class: 'btn btn-primary'
+          = link_to 'Редактировать пост', edit_post_path(post), class: 'btn btn-primary'
 
       .buffer-both
         p
           = 'Комментарии:'
 
-        = render partial: 'comments/comment', collection: @post.comments.limit(10).order(created_at: :asc)
+        = render partial: 'comments/comment', collection: post.comments.limit(10).order(created_at: :asc)
 
       - if signed_in?
         .buffer-top
-          = render partial: 'comments/form', locals: {comment: @new_comment || @post.comments.build}
+          = render partial: 'comments/form', locals: {comment: @new_comment || post.comments.build}
 
       = link_to 'Back', posts_path
