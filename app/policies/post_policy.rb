@@ -4,6 +4,6 @@ class PostPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.id == record.user_id
+    user && user.id == record.user_id
   end
 end

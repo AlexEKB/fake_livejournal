@@ -1,17 +1,17 @@
 class PostsController < ApplicationController
   expose :posts, -> { Post.limit(10).order(created_at: :desc) }
   expose :post
-  expose(:user_post) { current_user.posts.create(post_params) }
 
   def index
     posts
   end
 
   def show
+    respond_with post
   end
 
   def new
-    post = Post.new
+    respond_with(post = Post.new)
     authorize! post
   end
 
@@ -20,7 +20,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = user_post
+    post = current_user.posts.create(post_params)
+    # post.save(post_params)
     respond_with post
   end
 

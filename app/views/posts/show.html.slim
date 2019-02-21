@@ -14,7 +14,7 @@
         p.text-justify
           = post.text
 
-      - if signed_in? #|| allowed_to?(:edit?, post)
+      - if allowed_to?(:edit?, post)
         p.buffer-top
           = link_to 'Редактировать пост', edit_post_path(post), class: 'btn btn-primary'
 
@@ -24,8 +24,8 @@
 
         = render partial: 'comments/comment', collection: post.comments.limit(10).order(created_at: :asc)
 
-      - if signed_in?
+      - if user_signed_in?
         .buffer-top
-          = render partial: 'comments/form', locals: {comment: @new_comment || post.comments.build}
+          = render partial: 'comments/form', locals: { comment: @new_comment || post.comments.build }
 
       = link_to 'Back', posts_path

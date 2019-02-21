@@ -30,8 +30,14 @@ gem 'slim-rails'
 gem 'responders'
 gem 'decent_exposure', '3.0.0'
 
+gem 'i18n'
+
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -45,4 +51,5 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'launchy'
 end
