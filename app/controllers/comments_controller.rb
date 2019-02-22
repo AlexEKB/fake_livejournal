@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   expose :post
-  expose(:comments, ancestor: :publisher)
+  expose(:comments, ancestor: :post)
   expose :comment
   expose :new_comment
 
@@ -17,12 +17,12 @@ class CommentsController < ApplicationController
   def destroy
     authorize! comment
     comment.destroy
-    respond_with comment, location: -> { post_path(comment.post) }
+    respond_with comment, location: -> {post_path(comment.post)}
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body).merge({ user: current_user })
+    params.require(:comment).permit(:body).merge({user: current_user})
   end
 end

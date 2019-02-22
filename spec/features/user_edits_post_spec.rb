@@ -19,4 +19,17 @@ RSpec.feature 'USER edits post', type: :feature do
     expect(page).to have_content('Обновленный пост')
     expect(page).to have_content('Редактированный текст.')
   end
+
+  scenario 'not update post' do
+    visit(edit_post_path(post))
+
+    fill_in("post[title]", with: '')
+    fill_in("post[text]", with: '')
+    click_button 'Запостить'
+
+    expect(page).to have_content("Post could not be updated.")
+    expect(page).to have_content("В вашей форме2 ошибок")
+    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Text can't be blank")
+  end
 end

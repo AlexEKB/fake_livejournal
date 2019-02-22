@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   expose :posts, -> { Post.limit(10).order(created_at: :desc) }
-  expose :post
+  expose :post, scope: ->{ current_user.posts }
 
   def index
     posts
@@ -20,8 +20,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.create(post_params)
-    # post.save(post_params)
+    post.save(post_params)
     respond_with post
   end
 

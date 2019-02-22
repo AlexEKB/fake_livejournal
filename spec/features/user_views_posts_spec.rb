@@ -15,4 +15,10 @@ RSpec.feature 'User views posts', type: :feature do
     expect(page).to have_content('First post')
     expect(page).to have_content('Second post')
   end
+
+  scenario 'renders posts titles in right order' do
+    visit(root_path)
+
+    expect(page).to have_content /Second post.*First post/m
+  end
 end
