@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.feature 'GUEST sign up', type: :feature do
-
-  scenario 'open page sign up' do
+RSpec.describe 'GUEST sign up', type: :feature do
+  it 'open page sign up' do
     visit '/'
 
     click_link 'Зарегистрироваться'
@@ -16,7 +17,7 @@ RSpec.feature 'GUEST sign up', type: :feature do
     expect(page).to have_content('Sign in with GoogleOauth2')
   end
 
-  scenario 'create new user' do
+  it 'create new user' do
     visit '/users/sign_up'
 
     fill_in('Email', with: 'user2@mail.ru')
@@ -26,6 +27,6 @@ RSpec.feature 'GUEST sign up', type: :feature do
 
     expect(page).to have_content('Welcome! You have signed up successfully.')
     expect(page).to have_content('Создать новый пост')
-    expect(page).not_to have_content("Зарегистрироваться")
+    expect(page).not_to have_content('Зарегистрироваться')
   end
 end

@@ -10,17 +10,14 @@ class User < ApplicationRecord
     user = User.where(email: data['email']).first
 
     # Uncomment the section below if you want users to be created if they don't exist
-    unless user
-      user = User.create(provider: access_token.provider,
+    user ||= User.create(provider: access_token.provider,
                          uid: access_token.uid,
                          email: data['email'],
-                         password: Devise.friendly_token[0, 20]
-      )
-    end
+                         password: Devise.friendly_token[0, 20])
     user
   end
 
   def username
-    self.email.split('@')[0].capitalize
+    email.split('@')[0].capitalize
   end
 end

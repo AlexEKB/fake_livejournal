@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
   expose :user
+  expose :users
+  # expose_decorated :user
+  # expose_decorated :users
 
   def new
-    user = User.new
+    User.new
   end
 
   def edit

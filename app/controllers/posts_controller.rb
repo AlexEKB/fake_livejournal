@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
+  expose :post
   expose :posts, -> { Post.limit(10).order(created_at: :desc) }
-  expose :post, scope: ->{ current_user.posts }
+  # expose_decorated :post, :posts
 
   def index
     posts
@@ -37,6 +38,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text).merge(user: current_user)
   end
 end

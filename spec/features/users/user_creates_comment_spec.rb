@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.feature 'USER creates comment', type: :feature do
+RSpec.describe 'USER creates comment', type: :feature do
   let(:user) { FactoryBot.create :user }
   let(:post) { FactoryBot.create :post, user: user }
 
-  before(:each) do
+  before do
     login_as user
   end
 
-  scenario 'create comment' do
+  it 'create comment' do
     visit(post_path(post))
 
     fill_in('comment[body]', with: 'Хороший коммент')

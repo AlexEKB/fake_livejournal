@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.feature 'USER removes profile', type: :feature do
+RSpec.describe 'USER removes profile', type: :feature do
   let(:user) { FactoryBot.create :user }
 
-  before(:each) do
+  before do
     login_as user
   end
 
-  scenario 'remove profile' do
+  it 'remove profile' do
     visit('/users/edit')
 
     click_button 'Cancel my account'
