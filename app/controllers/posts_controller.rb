@@ -1,18 +1,8 @@
 class PostsController < ApplicationController
   expose :post
-  expose :posts, -> { Post.limit(10).order(created_at: :desc) }
-  # expose_decorated :post
-
-  def index
-    posts
-  end
-
-  def show
-    respond_with post
-  end
+  expose :posts, -> { fetch_posts }
 
   def new
-    respond_with(post = Post.new)
     authorize! post
   end
 
@@ -21,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post.save(post_params)
+    post.save
     respond_with post
   end
 
@@ -39,5 +29,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :text).merge(user: current_user)
+  end
+
+  def fetch_posts
+    Post.limit(10).order(created_at: :desc)
   end
 end

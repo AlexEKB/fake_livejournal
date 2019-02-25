@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   expose(:comments, ancestor: :post)
   expose :comment
   expose :new_comment
-  # expose_decorated :comment, :comments, :new_comment
 
   def create
     new_comment = post.comments.build(comment_params)
@@ -18,7 +17,8 @@ class CommentsController < ApplicationController
   def destroy
     authorize! comment
     comment.destroy
-    respond_with comment, location: -> { post_path(comment.post) }
+    redirect_to post, notice: 'Комментарий успешно удалён.'
+    # respond_with comment, location: -> { post_path(comment.post) }
   end
 
   private

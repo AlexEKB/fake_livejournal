@@ -14,6 +14,10 @@
  *= require_self
  */
 
+.pull-right {
+    padding: 10px;
+}
+
 /* @media */
 @media (max-width: 960px) {
     .column-1-4 {
