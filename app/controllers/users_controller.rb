@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   expose :user
-  expose :users
   # expose_decorated :user
-  # expose_decorated :users
 
   def new
     User.new

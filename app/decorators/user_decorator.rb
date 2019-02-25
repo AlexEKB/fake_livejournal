@@ -1,13 +1,12 @@
 class UserDecorator < Draper::Decorator
   include Draper::LazyHelpers
-  delegate :email, :to_model
+  delegate :email, :id
 
-  def self.username
+  def username
     "#{email.split('@')[0].capitalize.to_s}"
-    # username ||= object.self.email.split('@')[0].capitalize
   end
 
   def email_with_id
-    "#{object.email} #{object.id}"
+    "#{email} #{id}"
   end
 end

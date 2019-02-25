@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   expose :post
   expose :posts, -> { Post.limit(10).order(created_at: :desc) }
-  # expose_decorated :post, :posts
+  # expose_decorated :post
 
   def index
     posts

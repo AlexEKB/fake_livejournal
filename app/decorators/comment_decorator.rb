@@ -1,3 +1,4 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :body, :to_model
+  delegate :body, :id
+
 end

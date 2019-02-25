@@ -1,7 +1,7 @@
 class PostDecorator < Draper::Decorator
-  delegate :title, :text, :to_model
+  delegate :title, :text, :id
 
-  def email_with_id
-    "#{object.email} #{object.id}"
+  def comments_count
+    post.comments.length
   end
 end

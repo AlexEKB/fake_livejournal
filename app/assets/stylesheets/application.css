@@ -14,24 +14,6 @@
  *= require_self
  */
 
-.footer-big {
-    padding:105px 0 100px 0
-}
-
-.mini-footer p {
-    text-align:center;
-    margin:0;
-    line-height:26px;
-    font-size:15px;
-}
-
-@media (max-width:991px) {
-    .footer-menu {
-        padding-left:0
-    }
-}
-
-
 /* @media */
 @media (max-width: 960px) {
     .column-1-4 {

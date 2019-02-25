@@ -17,7 +17,7 @@ class User < ApplicationRecord
     user
   end
 
-  def username
-    email.split('@')[0].capitalize
-  end
+  # def username
+  #   email.split('@')[0].capitalize
+  # end
 end
