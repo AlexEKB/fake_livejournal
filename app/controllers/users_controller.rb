@@ -1,39 +1,32 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @users = User.all
-  end
-
-  def show
-  end
+  expose :user
 
   def new
-    @user = User.new
+    User.new
   end
 
   def edit
+    authorize! user
   end
 
   def create
-    @user = User.new(user_params)
-    respond_with @user
+    user = User.new(user_params)
+    respond_with user
   end
 
   def update
-    respond_with @user
+    authorize! user
+    user.update(user_params)
+    respond_with user
   end
 
   def destroy
-    @user.destroy
-    respond_with @user
+    authorize! user
+    user.destroy
+    respond_with user
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_params
     params.require(:user).permit(:email, :encrypted_password, :password)

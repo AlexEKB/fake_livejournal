@@ -22,7 +22,7 @@ html[lang="en"]
         ul.nav.navbar-nav
           - if user_signed_in?
             li
-              = link_to 'Профиль', current_user
+              = link_to 'Профиль ' + current_user.decorate.username, current_user
             li
               = link_to 'Выйти', destroy_user_session_path, :method => :delete
             li
@@ -36,13 +36,14 @@ html[lang="en"]
               = link_to 'Зарегистрироваться', new_user_registration_path, class: 'btn btn-success btn-outline'
     .container
       .row
-        .col-lg-8
-          .flash
-            = bootstrap_flash
+        .pull-right
+          = bootstrap_flash
         .col-lg-12
           = yield
 
-      footer
-        p.text-right
-          | © AlexeyAbdulmanov 2019
+      .footer
+        .navbar-fixed-bottom
+          .pull-right
+            | © AlexeyAbdulmanov 2019
+
 

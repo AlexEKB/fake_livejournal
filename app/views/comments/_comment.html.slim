@@ -7,5 +7,5 @@
   p
     = comment.body
     '
-    - if comment.user == current_user
+    - if allowed_to?(:destroy?, comment)
       = link_to(fa_icon('times'), post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Удалить комментарий?' })

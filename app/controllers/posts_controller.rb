@@ -1,41 +1,37 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @posts = Post.limit(10).order(created_at: :desc)
-  end
-
-  def show
-  end
+  expose :post
+  expose :posts, -> { fetch_posts }
 
   def new
-    @post = Post.new
+    authorize! post
   end
 
   def edit
+    authorize! post
   end
 
   def create
-    @post = current_user.posts.create(post_params)
-    respond_with @post
+    post.save
+    respond_with post
   end
 
   def update
-    respond_with @post
+    post.update(post_params)
+    respond_with post
   end
 
   def destroy
-    @post.destroy
-    respond_with @post
+    post.destroy
+    respond_with post
   end
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
+  def post_params
+    params.require(:post).permit(:title, :text).merge(user: current_user)
   end
 
-  def post_params
-    params.require(:post).permit(:title, :text)
+  def fetch_posts
+    Post.limit(10).order(created_at: :desc)
   end
 end
