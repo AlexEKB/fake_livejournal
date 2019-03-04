@@ -19,6 +19,17 @@
 }
 
 /* @media */
+
+@media (min-width: 992px) {
+    .container.s {
+        width: 80%;
+        float: right;
+    }
+    .post-img {
+        width: 40%;
+    }
+}
+
 @media (max-width: 960px) {
     .column-1-4 {
         float: left;
