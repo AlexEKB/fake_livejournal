@@ -21,6 +21,7 @@ gem 'responders'
 # front-end gems
 gem 'coffee-rails', '~> 4.2'
 gem 'font-awesome-rails'
+gem 'jquery-rails'
 gem 'i18n'
 gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'
