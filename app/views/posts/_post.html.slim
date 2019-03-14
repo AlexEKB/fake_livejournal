@@ -16,4 +16,5 @@
                   = l post.published_at, format: :short, default: '-'
               h4
                 comment
-                  = post.decorate.comments_count.to_s + " comments"
+                  = pluralize(post.comments_count, 'comment', 'comments')
+
