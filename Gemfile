@@ -28,6 +28,9 @@ gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 
 # views
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'slim-rails'
 
 group :development, :test do

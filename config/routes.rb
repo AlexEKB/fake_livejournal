@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'posts#index'
+  mount Ckeditor::Engine => '/ckeditor'
 
   namespace :users do
     get 'omniauth_callbacks/google_oauth2'

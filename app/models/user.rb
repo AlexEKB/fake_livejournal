@@ -16,8 +16,4 @@ class User < ApplicationRecord
                          password: Devise.friendly_token[0, 20])
     user
   end
-
-  # def username
-  #   email.split('@')[0].capitalize
-  # end
 end

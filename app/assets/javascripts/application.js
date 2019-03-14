@@ -14,4 +14,5 @@
 //= require jquery
 //= require twitter/bootstrap
 //= require activestorage
+//= require ckeditor/init
 //= require_tree .

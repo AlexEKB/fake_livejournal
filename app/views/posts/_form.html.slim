@@ -6,8 +6,6 @@
     = f.text_field :title, class: 'form-control'
   .form-group
     = f.label :Текст
-    = f.text_field :text, class: 'form-control'
+    = f.cktext_area :text, class: 'form-control'
   .actions
     = f.submit 'Запостить', class: 'btn btn-primary'
-    |  или
-    = link_to ' вернуться', :back

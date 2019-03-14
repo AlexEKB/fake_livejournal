@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   expose :post
-  expose :posts, -> { fetch_posts }
+  expose :posts, -> {fetch_posts}
 
   def new
     authorize! post
