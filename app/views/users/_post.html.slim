@@ -1,0 +1,17 @@
+h3
+  | Опубликованые
+- user.posts.each do |post|
+    - if post.published?
+      ul.h4
+        li
+          => link_to post.title, post_path(post)
+          = l post.created_at, format: :short
+- if allowed_to?(:edit?, user)
+  h3
+    | Черновики
+  - user.posts.each do |post|
+    - if not post.published?
+      ul.h4
+        li
+          => link_to post.title, post_path(post)
+          = l post.created_at, format: :short

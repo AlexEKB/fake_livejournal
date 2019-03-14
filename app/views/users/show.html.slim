@@ -4,6 +4,13 @@
   - if allowed_to?(:edit?, user)
     p.buffer-top
       = link_to 'Редактировать профиль', edit_user_path(user), class: 'btn btn-default'
+
+h2
+  | Посты данного пользователя:
+
+.buffer-bottom
+  = render partial: 'users/post'
+
 = link_to 'Show', user
 |  |
 = link_to 'Back', users_path

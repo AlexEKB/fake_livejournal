@@ -28,10 +28,10 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text).merge(user: current_user)
+    params.require(:post).permit(:title, :text, :published).merge(user: current_user)
   end
 
   def fetch_posts
-    Post.limit(10).order(created_at: :desc)
+    Post.limit(10).order(published_at: :desc)
   end
 end
