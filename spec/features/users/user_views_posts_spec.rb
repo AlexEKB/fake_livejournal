@@ -5,8 +5,8 @@ RSpec.describe 'User views posts', type: :feature do
 
   before do
     login_as user
-    FactoryBot.create :post, user: user, title: 'First post'
-    FactoryBot.create :post, user: user, title: 'Second post'
+    FactoryBot.create :post, published: true, user: user, title: 'First post'
+    FactoryBot.create :post, published: true, user: user, title: 'Second post'
   end
 
   it 'renders posts titles' do

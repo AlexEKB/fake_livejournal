@@ -13,6 +13,6 @@ RSpec.describe 'USER removes post', type: :feature do
 
     click_link 'Удалить'
 
-    expect(page).to have_content('Post was successfully destroyed.')
+    expect(page).to have_content('Пост был успешно удалён.')
   end
 end

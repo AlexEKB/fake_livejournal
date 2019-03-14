@@ -9,10 +9,11 @@ RSpec.describe 'USER edits profile', type: :feature do
 
   it 'edit profile' do
     visit(edit_user_path(user))
-    fill_in('Email', with: 'user1@mail.com')
+    fill_in('email', with: 'user1@mail.com')
+
     click_button 'Сохранить'
 
-    expect(page).to have_content('User was successfully updated.')
+    expect(page).to have_content('Пользователь был успешно обновлён.')
     expect(page).to have_content('user1@mail.com')
   end
 end

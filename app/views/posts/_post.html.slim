@@ -13,7 +13,7 @@
                 = post.user.email
               h3
                 small
-                  = l post.created_at, format: :short
+                  = l post.published_at, format: :short, default: '-'
               h4
                 comment
                   = post.decorate.comments_count.to_s + " comments"

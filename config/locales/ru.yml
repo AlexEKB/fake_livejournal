@@ -1,0 +1,16 @@
+ru:
+  activerecord:
+    models:
+      user: 'Пользователь'
+      post: 'Пост'
+    attributes:
+      user:
+        first_name: 'Имя'
+        last_name: 'Фамилия'
+        email: 'email'
+        password: 'Пароль'
+      post:
+        title: 'Заголовок'
+        text: 'Текст'
+  controllers:
+

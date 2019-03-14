@@ -15,7 +15,7 @@ RSpec.describe 'USER edits post', type: :feature do
     fill_in('post[text]', with: 'Редактированный текст.')
     click_button 'Запостить'
 
-    expect(page).to have_content('Post was successfully updated.')
+    expect(page).to have_content('Пост был успешно обновлён.')
     expect(page).to have_content('Обновленный пост')
     expect(page).to have_content('Редактированный текст.')
   end
@@ -27,9 +27,9 @@ RSpec.describe 'USER edits post', type: :feature do
     fill_in('post[text]', with: '')
     click_button 'Запостить'
 
-    expect(page).to have_content('Post could not be updated.')
+    expect(page).to have_content('Пост не может быть обновлён.')
     expect(page).to have_content('В вашей форме2 ошибок')
-    expect(page).to have_content("Title can't be blank")
-    expect(page).to have_content("Text can't be blank")
+    expect(page).to have_content("Заголовок не может быть пустым")
+    expect(page).to have_content("Текст не может быть пустым")
   end
 end

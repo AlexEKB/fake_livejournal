@@ -7,9 +7,9 @@ RSpec.describe 'GUEST sign up', type: :feature do
     click_link 'Зарегистрироваться'
 
     expect(page).to have_content('Sign up')
-    expect(page).to have_content('Email')
-    expect(page).to have_content('Password')
-    expect(page).to have_content('Password confirmation')
+    expect(page).to have_content('email')
+    expect(page).to have_content('Пароль')
+    expect(page).to have_content('Подтверждение пароля')
     expect(page).to have_button('Sign up')
     expect(page).to have_content('Log in')
     expect(page).to have_content('Sign in with GoogleOauth2')
@@ -18,12 +18,12 @@ RSpec.describe 'GUEST sign up', type: :feature do
   it 'create new user' do
     visit '/users/sign_up'
 
-    fill_in('Email', with: 'user2@mail.ru')
-    fill_in('Password', with: '123456')
-    fill_in('Password confirmation', with: '123456')
+    fill_in('email', with: 'user2@mail.ru')
+    fill_in('Пароль', with: '123456')
+    fill_in('Подтверждение пароля', with: '123456')
     click_button 'Sign up'
 
-    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page).to have_content('Добро пожаловать! Вы успешно зарегистрировались.')
     expect(page).to have_content('Создать новый пост')
     expect(page).not_to have_content('Зарегистрироваться')
   end
