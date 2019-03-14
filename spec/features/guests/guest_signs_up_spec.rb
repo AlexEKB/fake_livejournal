@@ -18,6 +18,8 @@ RSpec.describe 'GUEST sign up', type: :feature do
   it 'create new user' do
     visit '/users/sign_up'
 
+    fill_in('Имя', with: 'Name')
+    fill_in('Фамилия', with: 'Surname')
     fill_in('email', with: 'user2@mail.ru')
     fill_in('Пароль', with: '123456')
     fill_in('Подтверждение пароля', with: '123456')
