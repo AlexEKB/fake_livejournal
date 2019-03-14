@@ -1,4 +1,4 @@
-class UserDecorator < Draper::Decorator
+class UserDecorator < BaseDecorator
   include Draper::LazyHelpers
   delegate :email, :id
 

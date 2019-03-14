@@ -1,5 +1,5 @@
-class PostDecorator < Draper::Decorator
-  delegate :title, :text, :id
+class PostDecorator < BaseDecorator
+  delegate :title, :text
 
   def comments_count
     post.comments.count
