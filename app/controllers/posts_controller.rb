@@ -6,6 +6,10 @@ class PostsController < ApplicationController
     authorize! post
   end
 
+  def show
+    find_by_slug
+  end
+
   def edit
     authorize! post
   end
@@ -28,10 +32,14 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :published).merge(user: current_user)
+    params.require(:post).permit(:title, :text, :published, :slug).merge(user: current_user)
   end
 
   def fetch_posts
     Post.limit(10).order(published_at: :desc)
+  end
+
+  def find_by_slug
+    Post.friendly.find_by_slug(params[:id])
   end
 end

@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     if new_comment.save
       redirect_to post, notice: 'Комментарий успешно создан.'
     else
+      flash.now[:error] = 'Комментарий не может быть пустым!'
       render 'posts/show'
     end
   end
@@ -17,8 +18,7 @@ class CommentsController < ApplicationController
   def destroy
     authorize! comment
     comment.destroy
-    redirect_to post, notice: 'Комментарий успешно удалён.'
-    # respond_with comment, location: -> { post_path(comment.post) }
+    respond_with comment, location: -> { post_path(comment.post) }
   end
 
   private

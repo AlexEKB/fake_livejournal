@@ -14,7 +14,7 @@ RSpec.describe 'USER removes comment', type: :feature do
 
     all("[data-method='delete']").last.click
 
-    expect(page).to have_content('Комментарий успешно удалён.')
+    expect(page).to have_content('Комментарий был успешно удалён.')
     expect(page).not_to have_content('comment text1')
   end
 end

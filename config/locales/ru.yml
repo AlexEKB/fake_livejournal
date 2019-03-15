@@ -3,6 +3,7 @@ ru:
     models:
       user: 'Пользователь'
       post: 'Пост'
+      comment: 'Комментарий'
     attributes:
       user:
         first_name: 'Имя'
@@ -13,4 +14,9 @@ ru:
         title: 'Заголовок'
         text: 'Текст'
   controllers:
+    comments:
+      create:
+        notice:
+        alert:
+
 

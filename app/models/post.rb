@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+
   before_save :published_post
   belongs_to :user
   has_many :comments, dependent: :destroy

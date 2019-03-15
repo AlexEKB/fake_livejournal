@@ -22,6 +22,7 @@ gem 'responders'
 # front-end gems
 gem 'coffee-rails', '~> 4.2'
 gem 'font-awesome-rails'
+gem 'friendly_id'
 gem 'jquery-rails'
 gem 'i18n'
 gem 'russian'
