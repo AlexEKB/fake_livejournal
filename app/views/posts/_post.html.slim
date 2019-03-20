@@ -16,5 +16,8 @@
                   = l post.published_at, format: :short, default: '-'
               h4
                 comment
-                  = pluralize(post.comments_count, 'comment', 'comments')
+                  -if post.comments_count != 0
+                    = pluralize(post.comments_count, 'comment', 'comments')
+                  -else
+                    = 'no comments'
 

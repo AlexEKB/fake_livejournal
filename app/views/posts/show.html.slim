@@ -17,13 +17,13 @@
       - if allowed_to?(:edit?, post)
         p.buffer-top
           = link_to 'Редактировать пост', edit_post_path(post), class: 'btn btn-primary'
-
       .buffer-both
         p
           = 'Комментарии:'
 
         = render partial: 'comments/comment', collection: post.comments.limit(10).order(created_at: :asc)
 
-      - if user_signed_in?
-        .buffer-top
-          = render partial: 'comments/form', locals: { comment: @new_comment || post.comments.build }
+        - if user_signed_in?
+          .buffer-top
+            = render partial: 'comments/form', locals: { comment: @new_comment || post.comments.build }
+
