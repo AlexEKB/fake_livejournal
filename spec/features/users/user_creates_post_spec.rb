@@ -12,7 +12,7 @@ RSpec.describe 'USER creates post', type: :feature do
 
     fill_in('post[title]', with: 'Супер пост')
     fill_in('post[text]', with: 'Интересный текст.')
-    click_button 'Запостить'
+    click_button 'Создать'
 
     expect(page).to have_content('Пост был успешно создан.')
     expect(page).to have_content('Супер пост')
@@ -22,7 +22,7 @@ RSpec.describe 'USER creates post', type: :feature do
   it 'not create post' do
     visit(new_post_path)
 
-    click_button 'Запостить'
+    click_button 'Создать'
 
     expect(page).to have_content('Пост не может быть создан.')
     expect(page).to have_content('В вашей форме2 ошибок')

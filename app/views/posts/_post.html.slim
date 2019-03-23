@@ -1,23 +1,22 @@
-- posts.each do |post|
-  -if post.published == true
-    .col-md-4
-      .thumbnail
-        = image_tag 'medium_cover.png'
-        .thumbnail-inner
-          .caption
-            .post-description
-              h3
-                = link_to post.title, post_path(post)
-              h3
-                small
-                = post.user.email
-              h3
-                small
-                  = l post.published_at, format: :short, default: '-'
-              h4
-                comment
-                  -if post.comments_count != 0
-                    = pluralize(post.comments_count, 'comment', 'comments')
-                  -else
-                    = 'no comments'
+- posts.published.each do |post|
+  .col-md-4
+    .thumbnail
+      = image_tag 'medium_cover.png'
+      .thumbnail-inner
+        .caption
+          .post-description
+            h3
+              = link_to post.title, post_path(post)
+            h3
+              small
+              = post.user.email
+            h3
+              small
+                = l post.published_at, format: :short, default: '-'
+            h4
+              comment
+                -if post.comments_count.positive?
+                  = pluralize(post.comments_count, 'comment', 'comments')
+                -else
+                  = 'no comments'
 

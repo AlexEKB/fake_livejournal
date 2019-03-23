@@ -8,6 +8,9 @@ class Post < ApplicationRecord
 
   validates :title, :text, :user, presence: true
 
+  scope :published, -> { where(published: true) }
+  scope :drafts, -> { where(published: false) }
+
   def published_post
     if self.published == true
       self.published_at = Time.now

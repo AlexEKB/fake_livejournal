@@ -21,4 +21,10 @@ RSpec.describe 'User views posts', type: :feature do
 
     expect(page).to have_content /Second post.*First post/m
   end
+
+  it 'renders published posts in right order' do
+    visit(user_path(user))
+
+    expect(page).to have_content /Опубликованые.*First post.*Second post/m
+  end
 end

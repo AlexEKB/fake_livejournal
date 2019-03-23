@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User not views draft posts', type: :feature do
+RSpec.describe 'User draft posts', type: :feature do
   let(:user) { FactoryBot.create :user }
 
   before do
@@ -14,5 +14,18 @@ RSpec.describe 'User not views draft posts', type: :feature do
 
     expect(page).not_to have_content('First post')
     expect(page).not_to have_content('Second post')
+  end
+
+  it 'renders posts titles in user profile' do
+    visit(user_path(user))
+
+    expect(page).to have_content('First post')
+    expect(page).to have_content('Second post')
+  end
+
+  it 'renders drafts posts in right order' do
+    visit(user_path(user))
+
+    expect(page).to have_content /Черновики.*First post.*Second post/m
   end
 end

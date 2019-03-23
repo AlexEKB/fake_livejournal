@@ -13,7 +13,7 @@ RSpec.describe 'USER edits post', type: :feature do
 
     fill_in('post[title]', with: 'Обновленный пост')
     fill_in('post[text]', with: 'Редактированный текст.')
-    click_button 'Запостить'
+    click_button 'Создать'
 
     expect(page).to have_content('Пост был успешно обновлён.')
     expect(page).to have_content('Обновленный пост')
@@ -25,7 +25,7 @@ RSpec.describe 'USER edits post', type: :feature do
 
     fill_in('post[title]', with: '')
     fill_in('post[text]', with: '')
-    click_button 'Запостить'
+    click_button 'Создать'
 
     expect(page).to have_content('Пост не может быть обновлён.')
     expect(page).to have_content('В вашей форме2 ошибок')
