@@ -14,6 +14,10 @@
  *= require_self
  */
 
+.pull-right {
+    padding: 10px;
+}
+
 /* @media */
 
 @media (min-width: 992px) {
