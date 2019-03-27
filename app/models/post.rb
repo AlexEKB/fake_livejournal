@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   before_save :published_post
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :taggings
+  has_many :hashtags, through: :taggings, dependent: :destroy
 
   validates :title, :text, :user, presence: true
 
@@ -14,6 +16,16 @@ class Post < ApplicationRecord
   def published_post
     if self.published == true
       self.published_at = Time.now
+    end
+  end
+
+  def all_tags
+    self.hashtags.map(&:name).join(', ')
+  end
+
+  def all_tags=(names)
+    self.hashtags = names.split(',').map do |name|
+      Hashtag.where(name: name.strip).first_or_create!
     end
   end
 end

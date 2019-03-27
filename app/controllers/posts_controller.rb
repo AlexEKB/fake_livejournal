@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :published, :slug).merge(user: current_user)
+    params.require(:post).permit(:title, :text, :published, :slug, :all_tags).merge(user: current_user)
   end
 
   def fetch_posts

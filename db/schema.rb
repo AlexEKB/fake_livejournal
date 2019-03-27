@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_15_034846) do
+ActiveRecord::Schema.define(version: 2019_03_27_090539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,12 @@ ActiveRecord::Schema.define(version: 2019_03_15_034846) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "hashtags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "text"
     t.bigint "user_id"
@@ -60,6 +66,15 @@ ActiveRecord::Schema.define(version: 2019_03_15_034846) do
     t.string "slug"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id"], name: "index_taggings_on_hashtag_id"
+    t.index ["post_id"], name: "index_taggings_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,4 +94,6 @@ ActiveRecord::Schema.define(version: 2019_03_15_034846) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "taggings", "hashtags"
+  add_foreign_key "taggings", "posts"
 end

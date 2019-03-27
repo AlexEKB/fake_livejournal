@@ -5,6 +5,9 @@
     = f.label :Заголовок
     = f.text_field :title, class: 'form-control'
   .form-group
+    = f.label :"Теги(введите теги, через запятую ', ')"
+    = f.text_field :all_tags, class: 'form-control'
+  .form-group
     = f.label :Текст
     = f.cktext_area :text, class: 'form-control'
   .form-check
