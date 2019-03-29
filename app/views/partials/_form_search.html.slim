@@ -1,0 +1,8 @@
+a[data-toggle='collapse', data-target='#hide']
+  = fa_icon('search')
+li
+  #hide.collapse
+    = form_tag posts_path, class: 'navbar-form', role: 'search', method: :get do
+      .form-group
+        = text_field_tag :query, params[:query], autofocus: true, class: 'form-control'
+        = button_tag 'Поиск', class: 'btn btn-default', name: nil

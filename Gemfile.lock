@@ -115,6 +115,19 @@ GEM
       activemodel-serializers-xml (~> 1.0)
       activesupport (~> 5.0)
       request_store (~> 1.0)
+    elasticsearch (6.2.0)
+      elasticsearch-api (= 6.2.0)
+      elasticsearch-transport (= 6.2.0)
+    elasticsearch-api (6.2.0)
+      multi_json
+    elasticsearch-model (6.0.0)
+      activesupport (> 3)
+      elasticsearch (> 1)
+      hashie
+    elasticsearch-rails (6.0.0)
+    elasticsearch-transport (6.2.0)
+      faraday
+      multi_json
     erubi (1.8.0)
     execjs (2.7.0)
     factory_bot (5.0.0)
@@ -401,6 +414,8 @@ DEPENDENCIES
   devise
   devise-i18n
   draper
+  elasticsearch-model
+  elasticsearch-rails
   factory_bot_rails
   font-awesome-rails
   friendly_id

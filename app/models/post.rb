@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
@@ -27,5 +29,18 @@ class Post < ApplicationRecord
     self.hashtags = names.split(',').map do |name|
       Hashtag.where(name: name.strip).first_or_create!
     end
+  end
+
+  def self.search(query)
+    __elasticsearch__.search(
+        {
+            query: {
+                multi_match: {
+                    query: query,
+                    fields: ['title', 'text']
+                }
+            }
+        }
+    )
   end
 end

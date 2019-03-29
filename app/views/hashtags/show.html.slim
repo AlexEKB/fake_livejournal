@@ -4,7 +4,7 @@ h1
     = hashtag.name
 
 ol
-  - hashtag.posts.each do |post|
+  - hashtag.posts.published.each do |post|
     li.h2
       = link_to post.title, post_path(post)
     / p

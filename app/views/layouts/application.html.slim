@@ -23,12 +23,16 @@ html[lang="en"]
         ul.nav.navbar-nav
           - if user_signed_in?
             li
+              = render partial: 'partials/form_search'
+            li
               = link_to 'Профиль ' + current_user.decorate.username, current_user
             li
               = link_to 'Выйти', destroy_user_session_path, :method => :delete
             li
               = link_to 'Создать новый пост', new_post_path, class: 'btn btn-success btn-outline'
           - else
+            li
+              = render partial: 'partials/form_search'
             li
               = link_to 'Войти', new_user_session_path
             li

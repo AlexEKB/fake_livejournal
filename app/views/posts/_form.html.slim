@@ -3,10 +3,10 @@
 
   .form-group
     = f.label :Заголовок
-    = f.text_field :title, class: 'form-control'
+    = f.text_field :title, autofocus: true, class: 'form-control'
   .form-group
-    = f.label :"Теги(введите теги, через запятую ', ')"
-    = f.text_field :all_tags, class: 'form-control'
+    = f.label :Теги
+    = f.text_field :all_tags, placeholder: 'введите теги, через запятую', class: 'form-control'
   .form-group
     = f.label :Текст
     = f.cktext_area :text, class: 'form-control'

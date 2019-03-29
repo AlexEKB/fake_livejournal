@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   expose :post
-  expose :posts, -> {fetch_posts}
+  expose :posts, -> { get_posts }
 
   def new
     authorize! post
@@ -36,10 +36,27 @@ class PostsController < ApplicationController
   end
 
   def fetch_posts
-    Post.limit(10).order(published_at: :desc)
+    Post.limit(9).order(published_at: :desc)
   end
 
   def find_by_slug
     Post.friendly.find_by_slug(params[:id])
+  end
+
+  def search_posts
+    Post.search(params[:query]).records.published #((params[:query].present? ? params[:query] : '*')).records
+  end
+
+  def get_posts
+    unless params[:query].present?
+      fetch_posts
+    else
+      unless search_posts.present?
+        flash.now[:notice] = 'Записи не найдены'
+        fetch_posts
+      else
+        search_posts
+      end
+    end
   end
 end
