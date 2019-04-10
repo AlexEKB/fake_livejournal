@@ -4,47 +4,133 @@ html[lang="en"]
     = render partial: 'partials/google_yandex_analytics'
     meta[charset="utf-8"]
     meta[http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"]
-    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    meta[name="author" content="pixelhint.com"]
+    meta[name="description" content="Magnetic is a stunning responsive HTML5/CSS3 photography/portfolio website template"]
+    meta[name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"]
     title
       = content_for?(:title) ? yield(:title) : "FakeLiveJournal"
     = csrf_meta_tags
     link[href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"]
     = stylesheet_link_tag "application", :media => "all"
-    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144', skip_pipeline: true
-    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114', skip_pipeline: true
-    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72', skip_pipeline: true
-    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', skip_pipeline: true
-    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon', skip_pipeline: true
     = javascript_include_tag "application"
   body
-    .navbar.navbar-default.navbar-static-top
-      .container
-        = link_to raw("<strong>Fake Live Journal</strong>"), root_path, class: 'navbar-brand'
-        ul.nav.navbar-nav
+    header
+      .logo
+        a[href= root_path]
+          img[src="img/logo.png" title="LiveJournal" alt="LiveJournal"]
+      #menu_icon
+      nav
+        ul
+          li
+            a.selected[href= root_path]
+              | Home
           - if user_signed_in?
             li
-              = render partial: 'partials/form_search'
-            li
-              = link_to 'Профиль ' + current_user.decorate.username, current_user
+              a[href= current_user]
+                | Профиль #{current_user.decorate.username}
             li
               = link_to 'Выйти', destroy_user_session_path, :method => :delete
             li
-              = link_to 'Создать новый пост', new_post_path, class: 'btn btn-success btn-outline'
-          - else
+              a[href= new_post_path]
+                | Создать новый пост
             li
               = render partial: 'partials/form_search'
+          - else
             li
-              = link_to 'Войти', new_user_session_path
+              a[href= new_user_session_path]
+                | Войти
             li
               = link_to fa_icon('google', text: "Войти с помощью Google"), user_google_oauth2_omniauth_authorize_path
             li
-              = link_to 'Зарегистрироваться', new_user_registration_path, class: 'btn btn-success btn-outline'
-    .container
+              a[href= new_user_registration_path]
+                | Зарегистрироваться
+            li
+              = render partial: 'partials/form_search'
+      .footer.clearfix
+        ul.social.clearfix
+          li
+            a.fb[href="#" data-title="Facebook"]
+          li
+            a.google[href="#" data-title="Google +"]
+          li
+            a.behance[href="#" data-title="Behance"]
+          li
+            a.rss[href="#" data-title="RSS"]
+        .rights
+          p
+            | AlexeyAbdulmanov © 2019.
+          p
+            | Template by
+            a[href=""]
+              | Pixelhint.com
+
+    section.main.clearfix
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work1.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work2.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work3.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work4.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work5.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work6.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work2.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work3.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+      .work
+        a[href="inner.html"]
+          img.media[src="img/work1.jpg" alt=""]
+        .caption
+          .work_title
+            h1
+              | culpa qui officia deserunt mollit
+    / .container
       .row
         .pull-right
           = bootstrap_flash
         .col-md-12
           = yield
-      .footer.navbar-fixed-bottom
-        .pull-right
-          | © AlexeyAbdulmanov 2019
