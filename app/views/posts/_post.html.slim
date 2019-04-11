@@ -1,4 +1,31 @@
+/ - n = rand(1..9)
 - posts.published.each do |post|
+  .work
+    a[href= post_path(post)]
+      img.media[src="img/work#{rand(1..9)}.jpg" alt=""]
+      .caption
+        .work_title
+          h1
+            = post.title
+          .post-description
+            h3
+              small
+              = post.user.decorate.full_name
+            h3
+              small
+                = l post.published_at, format: :short, default: '-'
+            h4
+              comment
+                - if post.comments_count.positive?
+                  = pluralize(post.comments_count, 'comment', 'comments')
+                - else
+                  = 'no comments'
+            h4
+              label.label-primary
+                = raw post.hashtags.map(&:name).join(' ')
+
+
+/ - posts.published.each do |post|
   .work
     a[href="inner.html"]
       img.media[src="img/work1.jpg" alt=""]
