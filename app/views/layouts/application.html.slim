@@ -10,40 +10,35 @@ html[lang="en"]
     title
       = content_for?(:title) ? yield(:title) : "FakeLiveJournal"
     = csrf_meta_tags
-    link[href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"]
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
   body
     header
       .logo
-        a[href= root_path]
-          img[src="img/logo.png" title="LiveJournal" alt="LiveJournal"]
+        = link_to root_path
+          = image_tag("img/logo.png")
       #menu_icon
       nav
         ul
           li
-            a.selected[href= root_path]
+            a[href= root_path]
               | Home
           - if user_signed_in?
             li
-              a[href= current_user]
-                | Профиль #{current_user.decorate.username}
+              = link_to 'Profile ' + current_user.decorate.username, current_user
             li
-              = link_to 'Выйти', destroy_user_session_path, :method => :delete
+              = link_to 'Sign out', destroy_user_session_path, :method => :delete
             li
-              a[href= new_post_path]
-                | Создать новый пост
+              = link_to 'Create new post', new_post_path
             li
               = render partial: 'partials/form_search'
           - else
             li
-              a[href= new_user_session_path]
-                | Войти
+              = link_to 'Sing in', new_user_session_path
             li
-              = link_to fa_icon('google', text: "Войти с помощью Google"), user_google_oauth2_omniauth_authorize_path
+              = link_to 'Sing in with Google', user_google_oauth2_omniauth_authorize_path
             li
-              a[href= new_user_registration_path]
-                | Зарегистрироваться
+              = link_to 'Sing up', new_user_registration_path
             li
               = render partial: 'partials/form_search'
       .footer.clearfix
@@ -59,18 +54,25 @@ html[lang="en"]
         .rights
           p
             | AlexeyAbdulmanov © 2019.
-          p
-            | Template by
-            a[href=""]
-              | Pixelhint.com
+    .pull-right
+      = bootstrap_flash
     section.main.clearfix
+      = yield
+
+    / .container
+      .row
+        .pull-right
+          = bootstrap_flash
+        .col-md-12
+          = yield
+    / section.main.clearfix
       .work
         a[href="inner.html"]
           img.media[src="img/work1.jpg" alt=""]
         .caption
           .work_title
             h1
-              | culpa qui officia deserunt mollit
+              | sample text
       .work
         a[href="inner.html"]
           img.media[src="img/work2.jpg" alt=""]
@@ -127,9 +129,3 @@ html[lang="en"]
           .work_title
             h1
               | culpa qui officia deserunt mollit
-    / .container
-      .row
-        .pull-right
-          = bootstrap_flash
-        .col-md-12
-          = yield

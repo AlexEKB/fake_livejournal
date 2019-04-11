@@ -1,31 +1,25 @@
-.container.s
-  .row.buffer-top
-    .col-md-4.buffer-top
-      .div
-      = image_tag 'medium_cover_show.png', class: 'post-img'
-    .col-md-7.buffer-top.text-top
-      .div
-        h4.text-info
-          = 'COLLECTION'
-        h1.page-header
-          = post.title
-        h4
-          = raw post.hashtags.map(&:name).map{ |t| link_to t, hashtag_path(t), class: 'label label-primary' }.join(' ')
-        h3
-          = l post.created_at, format: :short
-        p.text-justify
-          = raw post.text
+section.main.clearfix
+section.top
+  .wrapper.content_header.clearfix
+    h1.title
+      = post.title
+section.wrapper
+  .content
+    h4
+      = raw post.hashtags.map(&:name).map {|t| link_to t, hashtag_path(t), class: 'label label-primary'}.join(' ')
+    h3
+      = l post.created_at, format: :short
+    p
+      = raw post.text
+    - if allowed_to?(:edit?, post)
+      p.buffer-top
+        = link_to 'Редактировать пост', edit_post_path(post), class: 'btn btn-primary'
+    .buffer-both
+      p
+        = 'Комментарии:'
 
-      - if allowed_to?(:edit?, post)
-        p.buffer-top
-          = link_to 'Редактировать пост', edit_post_path(post), class: 'btn btn-primary'
-      .buffer-both
-        p
-          = 'Комментарии:'
+      = render partial: 'comments/comment', collection: post.comments.limit(10).order(created_at: :asc)
 
-        = render partial: 'comments/comment', collection: post.comments.limit(10).order(created_at: :asc)
-
-        - if user_signed_in?
-          .buffer-top
-            = render partial: 'comments/form', locals: { comment: @new_comment || post.comments.build }
-
+      - if user_signed_in?
+        .buffer-top
+          = render partial: 'comments/form', locals: {comment: @new_comment || post.comments.build}
