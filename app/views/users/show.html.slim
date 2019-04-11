@@ -1,24 +1,21 @@
-.text-center
-  h2
-    | Имя:
-    '
-    = user.first_name
-  h2
-    | Фамилия:
-    '
-    = user.last_name
+section.main.clearfix
+section.top
+  .wrapper.content_header.clearfix
+    h1.title
+      = user.decorate.full_name
+section.wrapper
   h2
     = user.email
   - if allowed_to?(:edit?, user)
     p.buffer-top
       = link_to 'Редактировать профиль', edit_user_path(user), class: 'btn btn-default'
+  .content
+    h1
+      = 'Посты данного пользователя:'
 
-h2
-  | Посты данного пользователя:
+    .buffer-bottom
+      = render partial: 'users/post'
 
-.buffer-bottom
-  = render partial: 'users/post'
-
-= link_to 'Show', user
-|  |
-= link_to 'Back', users_path
+    = link_to 'Show', user
+    |  |
+    = link_to ' Back', users_path
