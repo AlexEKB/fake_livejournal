@@ -13,6 +13,7 @@
 
  *= require css/reset
  *= require css/main
+ *= require bootstrap_and_overrides
  *= require_self
  */
 
