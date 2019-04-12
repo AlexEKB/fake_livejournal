@@ -13,6 +13,6 @@ RSpec.describe 'USER removes profile', type: :feature do
     click_button 'Cancel my account'
 
     expect(page).to have_content('До свидания! Ваша учетная запись удалена. Надеемся снова увидеть вас.')
-    expect(page).to have_content('Зарегистрироваться')
+    expect(page).to have_content('Sign up')
   end
 end

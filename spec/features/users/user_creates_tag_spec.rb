@@ -27,8 +27,8 @@ RSpec.describe 'USER creates tag', type: :feature do
   end
 
   it 'tag search and hide draft posts' do
-    visit(root_path)
-
+    visit(post_path(Post.first))
+    
     page.first(:link, 'ruby').click
 
     expect(page).to have_content('post1')

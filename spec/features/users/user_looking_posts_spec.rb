@@ -28,7 +28,7 @@ RSpec.describe 'USER is looking for posts', type: :feature do
     visit(root_path)
 
     fill_in('query', with: 'foo')
-    click_button 'Поиск'
+    click_button 'Search'
 
     expect(page).to have_content('awesome')
     expect(page).to have_content('ruby')
