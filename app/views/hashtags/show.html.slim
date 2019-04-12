@@ -1,11 +1,13 @@
-h1
-  = 'Найденные посты по тегу: '
-  em.mark
-    = hashtag.name
-
-ol
-  - hashtag.posts.published.each do |post|
-    li.h2
-      = link_to post.title, post_path(post)
-    / p
-      = render partial: 'posts/post'
+section.main.clearfix
+section.top
+  .wrapper.content_header.clearfix
+    h1.title
+      = 'Найденные посты по тегу: ' + hashtag.name
+section.wrapper
+  .content
+    ol.h2
+    - hashtag.posts.published.each do |post|
+      li.h2
+        = link_to post.title, post_path(post)
+      / p
+        = render partial: 'posts/post'

@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'USER creates comment', type: :feature do
   let(:user) { FactoryBot.create :user }
   let(:post) { FactoryBot.create :post, user: user }
+  Post.__elasticsearch__.create_index!
+  Post.__elasticsearch__.refresh_index!
 
   before do
     login_as user

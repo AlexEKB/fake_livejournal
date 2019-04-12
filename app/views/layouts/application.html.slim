@@ -34,11 +34,11 @@ html[lang="en"]
               = render partial: 'partials/form_search'
           - else
             li
-              = link_to 'Sing in', new_user_session_path
+              = link_to 'Sign in', new_user_session_path
             li
-              = link_to 'Sing in with Google', user_google_oauth2_omniauth_authorize_path
+              = link_to 'Sign in with Google', user_google_oauth2_omniauth_authorize_path
             li
-              = link_to 'Sing up', new_user_registration_path
+              = link_to 'Sign up', new_user_registration_path
             li
               = render partial: 'partials/form_search'
       .footer.clearfix
@@ -58,74 +58,9 @@ html[lang="en"]
       = bootstrap_flash
     section.main.clearfix
       = yield
-
     / .container
       .row
         .pull-right
           = bootstrap_flash
         .col-md-12
           = yield
-    / section.main.clearfix
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work1.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | sample text
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work2.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | culpa qui officia deserunt mollit
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work3.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | culpa qui officia deserunt mollit
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work4.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | culpa qui officia deserunt mollit
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work5.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | culpa qui officia deserunt mollit
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work6.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | culpa qui officia deserunt mollit
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work2.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | culpa qui officia deserunt mollit
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work3.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | culpa qui officia deserunt mollit
-      .work
-        a[href="inner.html"]
-          img.media[src="img/work1.jpg" alt=""]
-        .caption
-          .work_title
-            h1
-              | culpa qui officia deserunt mollit

@@ -4,7 +4,7 @@ RSpec.describe 'GUEST sign up', type: :feature do
   it 'open page sign up' do
     visit '/'
 
-    click_link 'Зарегистрироваться'
+    click_link 'Sign up'
 
     expect(page).to have_content('Sign up')
     expect(page).to have_content('email')
@@ -26,7 +26,7 @@ RSpec.describe 'GUEST sign up', type: :feature do
     click_button 'Sign up'
 
     expect(page).to have_content('Добро пожаловать! Вы успешно зарегистрировались.')
-    expect(page).to have_content('Создать новый пост')
-    expect(page).not_to have_content('Зарегистрироваться')
+    expect(page).to have_content('Create new post')
+    expect(page).not_to have_content('Sign up')
   end
 end
