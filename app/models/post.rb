@@ -12,8 +12,8 @@ class Post < ApplicationRecord
 
   validates :title, :text, :user, presence: true
 
-  scope :published, -> { where(published: true) }
-  scope :drafts, -> { where(published: false) }
+  scope :published, -> {where(published: true)}
+  scope :drafts, -> {where(published: false)}
 
   def published_post
     if self.published == true
@@ -29,6 +29,11 @@ class Post < ApplicationRecord
     self.hashtags = names.split(',').map do |name|
       Hashtag.where(name: name.strip).first_or_create!
     end
+  end
+
+  mappings do
+    indexes :title, analyzer: 'russian'
+    indexes :text, analyzer: 'russian'
   end
 
   def self.search(query)

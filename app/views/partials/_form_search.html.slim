@@ -1,8 +1,4 @@
-a[data-toggle='collapse', data-target='#hide']
-
-li
-  #hide
-    = form_tag posts_path, role: 'search', method: :get do
-      .form-group
-        = text_field_tag :query, params[:query], autofocus: true, size: 10
-        = button_tag 'Search', name: nil
+= form_tag posts_path, role: 'search', method: :get do
+  .form-group
+    = text_field_tag :query, params[:query], size: 10
+    = button_tag 'Search', name: nil
